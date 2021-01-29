@@ -1107,7 +1107,9 @@ FlannBasedMatcher::FlannBasedMatcher( const Ptr<flann::IndexParams>& _indexParam
 
 Ptr<FlannBasedMatcher> FlannBasedMatcher::create()
 {
-    return makePtr<FlannBasedMatcher>();
+  cv::Ptrcv::flann::IndexParams indexParams = cv::makePtrcv::flann::LshIndexParams(6, 12, 1); // instantiate LSH index parameters
+  cv::Ptrcv::flann::SearchParams searchParams = cv::makePtrcv::flann::SearchParams(50);       // instantiate flann search parameters
+  return makePtr<FlannBasedMatcher>(indexParams, searchParams);
 }
 
 void FlannBasedMatcher::add( InputArrayOfArrays _descriptors )
